@@ -4,13 +4,13 @@ package gorick.gradesprojectandroid.MVP.Model;
  * Created by sg-0036936 on 06/03/2017.
  */
 
-public class GradesModel {
+public class GradeModel {
 
     private String matter;
-    private String fault;
+    private int fault;
     private double grade;
 
-    public GradesModel(String matter, String fault, double grade) {
+    public GradeModel(String matter, int fault, double grade) {
         this.matter = matter;
         this.fault = fault;
         this.grade = grade;
@@ -24,11 +24,11 @@ public class GradesModel {
         this.matter = matter;
     }
 
-    public String getFault() {
+    public int getFault() {
         return fault;
     }
 
-    public void setFault(String fault) {
+    public void setFault(int fault) {
         this.fault = fault;
     }
 
