@@ -8,6 +8,8 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import gorick.gradesprojectandroid.MVP.Model.GradeModel;
 import gorick.gradesprojectandroid.R;
 
@@ -43,11 +45,11 @@ public class MatterAdapter extends RecyclerView.Adapter<MatterAdapter.RecyclerVi
     }
 
     public static class RecyclerViewHolder extends RecyclerView.ViewHolder {
-        TextView matter;
+        @BindView(R.id.grade) TextView matter;
 
         public RecyclerViewHolder(View view) {
             super(view);
-            matter = (TextView) view.findViewById(R.id.grade);
+            ButterKnife.bind(this, view);
         }
     }
 }

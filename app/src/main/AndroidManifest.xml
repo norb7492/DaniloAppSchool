@@ -19,7 +19,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".MVP.View.NotificationActivity" />
-        <activity android:name=".MVP.View.PreLoginActivity"></activity>
+        <activity android:name=".MVP.View.PreLoginActivity">
+
+
+        </activity>
     </application>
 
 </manifest>
