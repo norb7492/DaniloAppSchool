@@ -12,8 +12,8 @@ import gorick.gradesprojectandroid.MVP.Model.UserModel;
 @Module
 public class UserLoginModule {
 
-    @PerActivity
     @Provides
+    @PerActivity
     public UserModel getUser(){
         return new UserModel();
     }

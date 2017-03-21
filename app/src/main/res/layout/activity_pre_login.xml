@@ -25,16 +25,6 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Senha"
-        android:id="@+id/pass"
-        android:layout_centerVertical="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:textColor="@color/white"/>
-
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:id="@+id/ra"
         android:hint="R.A."
         android:layout_above="@+id/pass"
@@ -52,7 +42,8 @@
         android:layout_alignParentEnd="true"
         android:layout_marginTop="33dp"
         android:id="@+id/forgot_pass"
-        android:textColor="@color/white"/>
+        android:textColor="@color/white"
+        android:clickable="true"/>
 
     <Button
         android:layout_width="wrap_content"
@@ -74,5 +65,34 @@
         android:layout_alignParentStart="true"
         android:id="@+id/textView8"
         android:textColor="@color/white"/>
+
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/forgot_pass"
+        android:layout_toRightOf="@+id/textView7"
+        android:layout_toEndOf="@+id/textView7"
+        android:layout_marginLeft="18dp"
+        android:layout_marginStart="18dp"></Spinner>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Senha"
+        android:id="@+id/pass"
+        android:textColor="@color/white"
+        android:layout_centerVertical="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Estado:"
+        android:id="@+id/textView7"
+        android:layout_alignBottom="@+id/spinner"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
 </RelativeLayout>

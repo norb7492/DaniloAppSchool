@@ -14,5 +14,6 @@ public class UserModel {
     private String ra;
     private String name;
     private String password;
+    private String state;
 
 }

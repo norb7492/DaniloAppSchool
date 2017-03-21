@@ -1,6 +1,8 @@
 package gorick.gradesprojectandroid.Dagger2.Module;
 
-import javax.inject.Singleton;
+import com.google.gson.FieldNamingPolicy;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import dagger.Module;
 import dagger.Provides;
@@ -19,6 +21,15 @@ import static gorick.gradesprojectandroid.MVP.Presenter.API.UrlAPI.BASE_URL;
 @Module
 public class RetrofitModule {
 
+
+    @Provides
+    @PerActivity
+    Gson provideGson() {
+        GsonBuilder gsonBuilder = new GsonBuilder();
+        gsonBuilder.setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES);
+        return gsonBuilder.create();
+    }
+
     @Provides
     @PerActivity
     public OkHttpClient provideHttpClient() {
@@ -27,9 +38,9 @@ public class RetrofitModule {
 
     @Provides
     @PerActivity
-    Retrofit provideRetrofit(OkHttpClient okHttpClient) {
+    Retrofit provideRetrofit(Gson gson, OkHttpClient okHttpClient) {
         Retrofit retrofit = new Retrofit.Builder()
-                .addConverterFactory(GsonConverterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create(gson))
                 .baseUrl(BASE_URL)
                 .client(okHttpClient)
                 //converts Retrofit response into Observable

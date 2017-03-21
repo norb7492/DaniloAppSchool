@@ -35,6 +35,10 @@ dependencies {
     compile 'com.android.support:appcompat-v7:25.1.0'
     testCompile 'junit:junit:4.12'
 
+    //Butterknife
+    compile 'com.jakewharton:butterknife:8.5.1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.5.1'
+
     //recyclerview
     compile 'com.android.support:recyclerview-v7:25.1.0';
 
@@ -59,10 +63,6 @@ dependencies {
     compile 'com.google.dagger:dagger:2.8'
     provided 'javax.annotation:jsr250-api:1.0'
 
-    //Butterknife
-    compile 'com.jakewharton:butterknife:8.5.1'
-    annotationProcessor 'com.jakewharton:butterknife-compiler:8.5.1'
-
     //JUNIT4 unitary test
     // Required -- JUnit 4 framework
     testCompile 'junit:junit:4.12'
@@ -83,10 +83,4 @@ buildscript {
     dependencies {
         classpath 'me.tatarka:gradle-retrolambda:3.4.0'
     }
-}
-
-//retrolambda
-// Required because retrolambda is on maven central
-repositories {
-    mavenCentral()
 }
