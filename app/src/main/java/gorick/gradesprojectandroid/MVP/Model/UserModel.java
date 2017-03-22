@@ -1,5 +1,8 @@
 package gorick.gradesprojectandroid.MVP.Model;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -11,9 +14,17 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class UserModel {
 
+    @SerializedName("ra")
+    @Expose
     private String ra;
+    @SerializedName("username")
+    @Expose
     private String name;
+    @SerializedName("password")
+    @Expose
     private String password;
+    @SerializedName("state")
+    @Expose
     private String state;
 
 }

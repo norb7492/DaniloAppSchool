@@ -1,6 +1,9 @@
 package gorick.gradesprojectandroid.MVP.Presenter.API;
 
+import retrofit2.http.Field;
+import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
+import retrofit2.http.POST;
 import retrofit2.http.Path;
 import rx.Observable;
 
@@ -10,6 +13,11 @@ import rx.Observable;
 
 public interface UserService {
 
-    @GET("users/{username}")
-    Observable<UserService> getUser(@Path("username") String userName);
+    @FormUrlEncoded
+    @POST("users")
+    Observable<UserService> setUser(@Field("ra") String ra, @Field("password") String password, @Field("state") String state);
+
+    @GET("users/{id}")
+    Observable<UserService> getUser(@Path("id") String userName);
+
 }

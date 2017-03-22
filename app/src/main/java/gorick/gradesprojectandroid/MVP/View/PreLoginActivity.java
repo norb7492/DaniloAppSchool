@@ -31,6 +31,8 @@ public class PreLoginActivity extends AppCompatActivity implements AdapterView.O
 
     Spinner spinner;
 
+    String state;
+
     @Inject
     PreLoginPresenter preLoginPresenter;
 
@@ -68,7 +70,7 @@ public class PreLoginActivity extends AppCompatActivity implements AdapterView.O
         raReceived = ra.getText().toString().trim();
         passwordReceived = pass.getText().toString().trim();
 
-        if (!(raReceived.equals("") || passwordReceived.equals(""))) {
+        if (!(raReceived.equals("") || passwordReceived.equals("") || state.equals("--"))) {
             preLoginPresenter.login(raReceived, passwordReceived);
         } else {
             Toast.makeText(getBaseContext(), "Preencha os campos", Toast.LENGTH_SHORT).show();
@@ -85,8 +87,7 @@ public class PreLoginActivity extends AppCompatActivity implements AdapterView.O
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         String TAG = "tag";
         Log.i(TAG, "onItemSelected: " + String.valueOf(parent.getItemAtPosition(position)));
-        String state = preLoginPresenter.onStateSelected(String.valueOf(parent.getItemAtPosition(position)));
-        Toast.makeText(getBaseContext(), state + " Selecionado", Toast.LENGTH_LONG).show();
+        state = preLoginPresenter.onStateSelected(String.valueOf(parent.getItemAtPosition(position)));
     }
 
     @Override
