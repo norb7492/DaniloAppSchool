@@ -1,15 +1,15 @@
 package gorick.gradesprojectandroid.MVP.View;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import javax.inject.Inject;
@@ -71,7 +71,20 @@ public class PreLoginActivity extends AppCompatActivity implements AdapterView.O
         passwordReceived = pass.getText().toString().trim();
 
         if (!(raReceived.equals("") || passwordReceived.equals("") || state.equals("--"))) {
-            preLoginPresenter.login(raReceived, passwordReceived);
+            if (preLoginPresenter.login(raReceived, passwordReceived)){
+
+                SharedPreferences sharedPreferences = PreLoginActivity.this.getSharedPreferences("text", PreLoginActivity.this.MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putString("ra", raReceived);
+                editor.putString("password", passwordReceived);
+                editor.apply();
+
+                Intent intent = new Intent(this, MainActivity.class);
+                startActivity(intent);
+
+            } else {
+                Toast.makeText(PreLoginActivity.this, "Login ou senha inválidos", Toast.LENGTH_LONG).show();
+            }
         } else {
             Toast.makeText(getBaseContext(), "Preencha os campos", Toast.LENGTH_SHORT).show();
         }

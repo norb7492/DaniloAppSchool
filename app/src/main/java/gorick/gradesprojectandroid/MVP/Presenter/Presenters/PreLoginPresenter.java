@@ -35,7 +35,6 @@ public class PreLoginPresenter {
         userModel.setPassword(pass);
         Log.i(TAG, "onStateSelected: " + userModel.getRa() + " " + userModel.getPassword());
 
-
         Observer<String> loginObserver = new Observer<String>() {
 
             @Override
