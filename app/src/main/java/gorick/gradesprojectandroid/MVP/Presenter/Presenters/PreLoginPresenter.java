@@ -8,6 +8,7 @@ import android.widget.Toast;
 import javax.inject.Inject;
 
 import gorick.gradesprojectandroid.MVP.Model.UserModel;
+import gorick.gradesprojectandroid.MVP.Presenter.Response.LoginResponse;
 import gorick.gradesprojectandroid.MVP.View.PreLoginActivity;
 import rx.Observer;
 
