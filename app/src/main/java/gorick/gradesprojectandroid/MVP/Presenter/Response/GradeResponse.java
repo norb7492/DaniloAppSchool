@@ -33,14 +33,6 @@ public class GradeResponse {
 
     public void getGradeRx() {
 
-       /* GradeService gradeService = retrofit.create(GradeService.class);
-        Observable<GradeModel> gradeObservable = GradeService.getGrade("name whatever");
-        gradeObservable.subscribeOn(Schedulers.newThread())
-                .observeOn(AndroidSchedulers.mainThread())
-                .map(user -> "Matéria: " + user.getMatter() + "\nNota:" + " " + user.getGrade() + "\nFaltas:" + " " + user.getFault())
-                .subscribe(userInfo -> Log.d("Output", String.valueOf(userInfo))); */
-
-
         Observable<GradeModel> getGrade = (Observable<GradeModel>) retrofit
                 .create(GradeService.class)
                 .getGrade()
@@ -65,10 +57,9 @@ public class GradeResponse {
 
                     @Override
                     public void onNext(List<DecimalFormat> grades) {
-                        mainPresenter.getListGrades(grades);
+                        mainPresenter.setListGrades(grades);
                     }
 
                 });
-
     }
 }

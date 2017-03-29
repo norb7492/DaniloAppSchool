@@ -21,7 +21,7 @@ public class MainPresenter {
 
     List<String> matters = new ArrayList<String>();
 
-    public void getListGrades(List<DecimalFormat> listGrades){
+    public void setListGrades(List<DecimalFormat> listGrades){
         adapterGrade = new GradeAdapter(listGrades, faults, matters);
         recyclerViewGrade.setAdapter(adapterGrade);
     }

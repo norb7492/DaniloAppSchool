@@ -34,8 +34,8 @@ public class MainActivity extends AppCompatActivity {
         recyclerViewGrade.setLayoutManager(layoutManager);
         recyclerViewGrade.setHasFixedSize(true);
 
+        gradeResponse.getGradeRx();
         MyApplication.getMainComponent().injectIntoMainActivity(this);// informando ao dagger sobre o uso de um component e a necessidade de injetar dependência
-
 
     }
 }
