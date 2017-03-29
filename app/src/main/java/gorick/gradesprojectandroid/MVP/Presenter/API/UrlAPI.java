@@ -6,6 +6,6 @@ package gorick.gradesprojectandroid.MVP.Presenter.API;
 
 public class UrlAPI {
 
-    public static final String BASE_URL = "";
+    public static final String BASE_URL = "http://nogoapps.com/";
 
 }

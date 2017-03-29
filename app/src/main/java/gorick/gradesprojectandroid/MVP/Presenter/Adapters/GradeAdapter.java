@@ -6,7 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -19,13 +19,15 @@ import gorick.gradesprojectandroid.R;
 
 public class GradeAdapter extends RecyclerView.Adapter<GradeAdapter.RecyclerViewHolder> {
 
-    private ArrayList<GradeModel> grades;
-    private ArrayList<GradeModel> faults;
+    private List<GradeModel> grades;
+    private List<GradeModel> faults;
+    private List<GradeModel> matters;
 
 
-    public GradeAdapter(ArrayList<GradeModel> grades, ArrayList<GradeModel> faults) {
+    public GradeAdapter(List<GradeModel> grades, List<GradeModel> faults, List<GradeModel> matters) {
         this.grades = grades;
         this.faults = faults;
+        this.matters = matters;
     }
 
     @Override
@@ -38,18 +40,23 @@ public class GradeAdapter extends RecyclerView.Adapter<GradeAdapter.RecyclerView
 
     @Override
     public void onBindViewHolder(RecyclerViewHolder holder, int position) {
+        holder.matter.setText(matters.get(position).toString());
         holder.grade.setText(grades.get(position).toString());
         holder.fault.setText(faults.get(position).toString());
     }
 
     @Override
     public int getItemCount() {
-        return grades == null ? 0 : grades.size();
+        return matters == null ? 0 : matters.size();
     }
 
     public static class RecyclerViewHolder extends RecyclerView.ViewHolder {
-        @BindView(R.id.grade) TextView grade;
-        @BindView(R.id.faults) TextView fault;
+        @BindView(R.id.grade)
+        TextView grade;
+        @BindView(R.id.faults)
+        TextView fault;
+        @BindView(R.id.materias)
+        TextView matter;
 
 
         public RecyclerViewHolder(View view) {

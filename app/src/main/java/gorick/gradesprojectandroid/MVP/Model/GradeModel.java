@@ -1,5 +1,11 @@
 package gorick.gradesprojectandroid.MVP.Model;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
+import java.text.DecimalFormat;
+import java.util.List;
+
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -11,8 +17,15 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class GradeModel {
 
+    @SerializedName("grade")
+    @Expose
+    private List<DecimalFormat> grades;
     private String matter;
     private int fault;
-    private double grade;
+    private DecimalFormat grade;
+
+    public void setGrades(DecimalFormat grade){
+        this.grades.add(grade);
+    }
 
 }

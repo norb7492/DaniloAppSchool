@@ -17,9 +17,9 @@ import javax.inject.Inject;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import gorick.gradesprojectandroid.Dagger2.Component.DaggerUserLoginComponent;
-import gorick.gradesprojectandroid.Dagger2.Component.UserLoginComponent;
+import gorick.gradesprojectandroid.MVP.Presenter.MyApplication;
 import gorick.gradesprojectandroid.MVP.Presenter.Presenters.PreLoginPresenter;
+import gorick.gradesprojectandroid.MVP.Presenter.Response.LoginResponse;
 import gorick.gradesprojectandroid.R;
 
 public class PreLoginActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
@@ -36,6 +36,9 @@ public class PreLoginActivity extends AppCompatActivity implements AdapterView.O
     @Inject
     PreLoginPresenter preLoginPresenter;
 
+    @Inject
+    LoginResponse loginResponse;
+
     ArrayAdapter<CharSequence> arrayAdapterStates;
 
 
@@ -48,12 +51,7 @@ public class PreLoginActivity extends AppCompatActivity implements AdapterView.O
 
         spinner = (Spinner) findViewById(R.id.spinner);
 
-        UserLoginComponent userLoginComponent = DaggerUserLoginComponent.builder()
-                .build();
-
-        preLoginPresenter = userLoginComponent.providePreLoginPresenter();
-        //Now u instantiate to your activity
-        userLoginComponent.injectPreLoginPresenterIntoPreLoginActivity(preLoginPresenter);
+        MyApplication.getUserLoginComponent().injectIntoPreLoginActivity(this);// informando ao dagger sobre o uso de um component e a necessidade de injetar dependência
 
         //Intantiate spinner
         arrayAdapterStates = ArrayAdapter.createFromResource(this, R.array.opcoes, android.R.layout.simple_spinner_item);
