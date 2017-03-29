@@ -2,9 +2,10 @@ package gorick.gradesprojectandroid.MVP.Presenter.Presenters;
 
 import android.support.v7.widget.RecyclerView;
 
+import java.text.DecimalFormat;
+import java.util.ArrayList;
 import java.util.List;
 
-import gorick.gradesprojectandroid.MVP.Model.GradeModel;
 import gorick.gradesprojectandroid.MVP.Presenter.Adapters.GradeAdapter;
 
 /**
@@ -14,18 +15,14 @@ import gorick.gradesprojectandroid.MVP.Presenter.Adapters.GradeAdapter;
 public class MainPresenter {
 
     private RecyclerView recyclerViewGrade;
-    private RecyclerView.Adapter adapterGrade;
-    List<GradeModel> grades;
-    List<GradeModel> faults;
-    List<GradeModel> matters;
+    private GradeAdapter adapterGrade;
+    List<Integer> faults = new ArrayList<Integer>();
 
 
+    List<String> matters = new ArrayList<String>();
 
-    public void getListGrades(){
-
-
-
-        adapterGrade = new GradeAdapter(grades, faults, matters);
+    public void getListGrades(List<DecimalFormat> listGrades){
+        adapterGrade = new GradeAdapter(listGrades, faults, matters);
         recyclerViewGrade.setAdapter(adapterGrade);
     }
 }

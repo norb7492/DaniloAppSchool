@@ -39,5 +39,4 @@ public class MyApplication extends Application {
     public static UserLoginComponent getUserLoginComponent(){
         return userLoginComponent;
     }
-
 }

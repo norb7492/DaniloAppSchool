@@ -6,11 +6,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import gorick.gradesprojectandroid.MVP.Model.GradeModel;
 import gorick.gradesprojectandroid.R;
 
 /**
@@ -19,12 +19,12 @@ import gorick.gradesprojectandroid.R;
 
 public class GradeAdapter extends RecyclerView.Adapter<GradeAdapter.RecyclerViewHolder> {
 
-    private List<GradeModel> grades;
-    private List<GradeModel> faults;
-    private List<GradeModel> matters;
+    private List<DecimalFormat> grades;
+    private List<Integer> faults;
+    private List<String> matters;
 
 
-    public GradeAdapter(List<GradeModel> grades, List<GradeModel> faults, List<GradeModel> matters) {
+    public GradeAdapter(List<DecimalFormat> grades, List<Integer> faults, List<String> matters) {
         this.grades = grades;
         this.faults = faults;
         this.matters = matters;

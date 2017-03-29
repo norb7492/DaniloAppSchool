@@ -8,8 +8,8 @@ import java.util.List;
 import javax.inject.Inject;
 
 import gorick.gradesprojectandroid.MVP.Model.GradeModel;
-import gorick.gradesprojectandroid.MVP.Model.UserModel;
 import gorick.gradesprojectandroid.MVP.Presenter.API.GradeService;
+import gorick.gradesprojectandroid.MVP.Presenter.Presenters.MainPresenter;
 import retrofit2.Retrofit;
 import rx.Observable;
 import rx.Observer;
@@ -29,7 +29,7 @@ public class GradeResponse {
     Retrofit retrofit;
 
     @Inject
-    GradeModel gradeModel;
+    MainPresenter mainPresenter;
 
     public void getGradeRx() {
 
@@ -49,9 +49,10 @@ public class GradeResponse {
                 .map(model -> {
                     // transform model
                     List<DecimalFormat> grades = model.getGrades();
-                    return new Integer(grades.size());
+                    return grades;
+                    //return new Integer(grades.size());
                 })
-                .subscribe(new Observer<DecimalFormat>() {
+                .subscribe(new Observer<List<DecimalFormat>>() {
                     @Override
                     public void onCompleted() {
 
@@ -63,8 +64,8 @@ public class GradeResponse {
                     }
 
                     @Override
-                    public void onNext(DecimalFormat grades) {
-                        gradeModel.setGrades(grades);
+                    public void onNext(List<DecimalFormat> grades) {
+                        mainPresenter.getListGrades(grades);
                     }
 
                 });

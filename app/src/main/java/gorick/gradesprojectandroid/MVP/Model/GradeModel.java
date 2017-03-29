@@ -22,10 +22,6 @@ public class GradeModel {
     private List<DecimalFormat> grades;
     private String matter;
     private int fault;
-    private DecimalFormat grade;
 
-    public void setGrades(DecimalFormat grade){
-        this.grades.add(grade);
-    }
 
 }

@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import javax.inject.Inject;
 
 import gorick.gradesprojectandroid.MVP.Presenter.MyApplication;
+import gorick.gradesprojectandroid.MVP.Presenter.Presenters.MainPresenter;
 import gorick.gradesprojectandroid.MVP.Presenter.Response.GradeResponse;
 import gorick.gradesprojectandroid.R;
 
@@ -19,6 +20,9 @@ public class MainActivity extends AppCompatActivity {
 
     @Inject
     GradeResponse gradeResponse;
+
+    @Inject
+    MainPresenter mainPresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
