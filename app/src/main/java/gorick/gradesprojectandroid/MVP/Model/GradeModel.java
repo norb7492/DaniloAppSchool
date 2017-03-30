@@ -4,7 +4,6 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.text.DecimalFormat;
-import java.util.List;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,7 +18,8 @@ public class GradeModel {
 
     @SerializedName("grade")
     @Expose
-    private List<DecimalFormat> grades;
+    private DecimalFormat grades;
+
     private String matter;
     private int fault;
 
