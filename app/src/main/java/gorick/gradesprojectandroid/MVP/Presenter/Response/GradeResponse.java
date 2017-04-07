@@ -2,7 +2,8 @@ package gorick.gradesprojectandroid.MVP.Presenter.Response;
 
 import android.util.Log;
 
-import java.text.DecimalFormat;
+import java.math.BigDecimal;
+import java.util.Arrays;
 
 import javax.inject.Inject;
 
@@ -40,15 +41,19 @@ public class GradeResponse {
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .map(model -> {
-                    // transform model
-                    DecimalFormat grades = model.getGrades();
+
+                    return model.getBoletim();
+
+                }).map(boletim -> {             // This map returns a double[]
+                    BigDecimal[] grades = new BigDecimal[boletim.length];
+                    for (int i = 0; i < grades.length; i++) {
+                        grades[i] = BigDecimal.valueOf(boletim[i].getGrade());
+                    }
                     return grades;
-                    //return new Integer(grades.size());
                 })
-                .subscribe(new Observer<DecimalFormat>() {
+                .subscribe(new Observer<BigDecimal[]>() {
                     @Override
                     public void onCompleted() {
-
                     }
 
                     @Override
@@ -57,9 +62,9 @@ public class GradeResponse {
                     }
 
                     @Override
-                    public void onNext(DecimalFormat grades) {
-                        Log.i(TAG, "caralhoooooo " + grades);
-                        //mainPresenter.setListGrades(grades);
+                    public void onNext(BigDecimal[] grades) {
+                        Log.i(TAG, "caralhoooooo " + Arrays.asList(grades));
+                        mainPresenter.setListGrades(grades);
                     }
                 });
     }

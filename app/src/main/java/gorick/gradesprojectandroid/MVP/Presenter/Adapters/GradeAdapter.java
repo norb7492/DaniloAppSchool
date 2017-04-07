@@ -6,7 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import java.text.DecimalFormat;
+import java.math.BigDecimal;
 import java.util.List;
 
 import butterknife.BindView;
@@ -19,12 +19,12 @@ import gorick.gradesprojectandroid.R;
 
 public class GradeAdapter extends RecyclerView.Adapter<GradeAdapter.RecyclerViewHolder> {
 
-    private List<DecimalFormat> grades;
+    private BigDecimal[] grades;
     private List<Integer> faults;
     private List<String> matters;
 
 
-    public GradeAdapter(List<DecimalFormat> grades, List<Integer> faults, List<String> matters) {
+    public GradeAdapter(BigDecimal[] grades, List<Integer> faults, List<String> matters) {
         this.grades = grades;
         this.faults = faults;
         this.matters = matters;
@@ -41,7 +41,7 @@ public class GradeAdapter extends RecyclerView.Adapter<GradeAdapter.RecyclerView
     @Override
     public void onBindViewHolder(RecyclerViewHolder holder, int position) {
         holder.matter.setText(matters.get(position).toString());
-        holder.grade.setText(grades.get(position).toString());
+        holder.grade.setText((CharSequence) grades[position]);
         holder.fault.setText(faults.get(position).toString());
     }
 

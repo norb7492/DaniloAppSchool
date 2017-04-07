@@ -11,6 +11,6 @@ import rx.Observable;
 
 public interface GradeService {
 
-    @GET("grades_json.json")
+    @GET("grades_json3.json")
     Observable<GradeModel> getGrade();
 }
