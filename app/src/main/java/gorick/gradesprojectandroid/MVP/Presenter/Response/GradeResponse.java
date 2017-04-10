@@ -7,6 +7,7 @@ import java.util.Arrays;
 
 import javax.inject.Inject;
 
+import gorick.gradesprojectandroid.MVP.Model.GradeList;
 import gorick.gradesprojectandroid.MVP.Presenter.API.GradeService;
 import gorick.gradesprojectandroid.MVP.Presenter.MyApplication;
 import gorick.gradesprojectandroid.MVP.Presenter.Presenters.MainPresenter;
@@ -42,16 +43,10 @@ public class GradeResponse {
                 .observeOn(AndroidSchedulers.mainThread())
                 .map(model -> {
 
-                    return model.getBoletim();
+                    return model.getGradeList();
 
-                }).map(boletim -> {             // This map returns a double[]
-                    BigDecimal[] grades = new BigDecimal[boletim.length];
-                    for (int i = 0; i < grades.length; i++) {
-                        grades[i] = BigDecimal.valueOf(boletim[i].getGrade());
-                    }
-                    return grades;
                 })
-                .subscribe(new Observer<BigDecimal[]>() {
+                .subscribe(new Observer<GradeList[]>() {
                     @Override
                     public void onCompleted() {
                     }
@@ -62,7 +57,11 @@ public class GradeResponse {
                     }
 
                     @Override
-                    public void onNext(BigDecimal[] grades) {
+                    public void onNext(GradeList[] gradesList) {
+                        BigDecimal[] grades = new BigDecimal[gradesList.length];
+                        for (int i = 0; i < grades.length; i++) {
+                            grades[i] = BigDecimal.valueOf(gradesList[i].getGradeList());
+                        }
                         Log.i(TAG, "caralhoooooo " + Arrays.asList(grades));
                         mainPresenter.setListGrades(grades);
                     }

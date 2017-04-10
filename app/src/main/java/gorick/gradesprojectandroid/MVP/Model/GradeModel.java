@@ -14,19 +14,17 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class GradeModel {
 
-    //@SerializedName("grade")
-    //@Expose
-    //private double grade;
-
     @SerializedName("boletim")
     @Expose
-    private Boletim[] boletim;
+    private GradeList[] gradeList;
 
-    @SerializedName("class")
-    @Expose
-    private String matter;
+    //@SerializedName("boletim")
+    //@Expose
+    //private ClassList[] classList;
 
-    private int fault;
+    //@SerializedName("boletim")
+    //@Expose
+    //private FaultList[] faultList;
 
 
 }

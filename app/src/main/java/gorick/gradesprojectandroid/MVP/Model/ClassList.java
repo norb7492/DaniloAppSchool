@@ -7,15 +7,13 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * Created by sg-0036936 on 31/03/2017.
+ * Created by sg-0036936 on 10/04/2017.
  */
-
 @Data
 @NoArgsConstructor
-public class Boletim {
+public class ClassList {
 
-    @SerializedName("grade")
+    @SerializedName("class")
     @Expose
-    private double grade;
-
+    private String classList;
 }
