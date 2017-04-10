@@ -16,7 +16,7 @@ public class GradeModel {
 
     @SerializedName("boletim")
     @Expose
-    private GradeList[] gradeList;
+    private GradeList[] reportLists;
 
     //@SerializedName("boletim")
     //@Expose
@@ -25,6 +25,5 @@ public class GradeModel {
     //@SerializedName("boletim")
     //@Expose
     //private FaultList[] faultList;
-
 
 }

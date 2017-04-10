@@ -7,7 +7,7 @@ import java.util.Arrays;
 
 import javax.inject.Inject;
 
-import gorick.gradesprojectandroid.MVP.Model.GradeList;
+import gorick.gradesprojectandroid.MVP.Model.GradeModel;
 import gorick.gradesprojectandroid.MVP.Presenter.API.GradeService;
 import gorick.gradesprojectandroid.MVP.Presenter.MyApplication;
 import gorick.gradesprojectandroid.MVP.Presenter.Presenters.MainPresenter;
@@ -43,10 +43,10 @@ public class GradeResponse {
                 .observeOn(AndroidSchedulers.mainThread())
                 .map(model -> {
 
-                    return model.getGradeList();
+                    return model;
 
                 })
-                .subscribe(new Observer<GradeList[]>() {
+                .subscribe(new Observer<GradeModel>() {
                     @Override
                     public void onCompleted() {
                     }
@@ -57,13 +57,19 @@ public class GradeResponse {
                     }
 
                     @Override
-                    public void onNext(GradeList[] gradesList) {
-                        BigDecimal[] grades = new BigDecimal[gradesList.length];
-                        for (int i = 0; i < grades.length; i++) {
-                            grades[i] = BigDecimal.valueOf(gradesList[i].getGradeList());
+                    public void onNext(GradeModel grades) {
+
+                        BigDecimal[] gradesList = new BigDecimal[grades.getReportLists().length];
+                        Integer[] faultsList = new Integer[grades.getReportLists().length];
+                        String[] classesList = new String[grades.getReportLists().length];
+
+                        for (int i = 0; i < grades.getReportLists().length; i++) {
+                            gradesList[i] = grades.getReportLists()[i].getGradesList();
+                            faultsList[i] = grades.getReportLists()[i].getFaultList();
+                            classesList[i] = grades.getReportLists()[i].getClassList();
                         }
-                        Log.i(TAG, "caralhoooooo " + Arrays.asList(grades));
-                        mainPresenter.setListGrades(grades);
+                        Log.i(TAG, "caralhoooooo " + Arrays.asList(classesList) + Arrays.asList(gradesList) + Arrays.asList(faultsList));
+                        //mainPresenter.setListGrades(gradesList.getGradeList());
                     }
                 });
     }
