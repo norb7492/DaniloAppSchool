@@ -7,7 +7,6 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import java.math.BigDecimal;
-import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -20,14 +19,14 @@ import gorick.gradesprojectandroid.R;
 public class GradeAdapter extends RecyclerView.Adapter<GradeAdapter.RecyclerViewHolder> {
 
     private BigDecimal[] grades;
-    private List<Integer> faults;
-    private List<String> matters;
+    private Integer[] faults;
+    private String[] classes;
 
 
-    public GradeAdapter(BigDecimal[] grades, List<Integer> faults, List<String> matters) {
+    public GradeAdapter(BigDecimal[] grades, Integer[] faults, String[] classes) {
         this.grades = grades;
         this.faults = faults;
-        this.matters = matters;
+        this.classes = classes;
     }
 
     @Override
@@ -40,22 +39,22 @@ public class GradeAdapter extends RecyclerView.Adapter<GradeAdapter.RecyclerView
 
     @Override
     public void onBindViewHolder(RecyclerViewHolder holder, int position) {
-        holder.matter.setText(matters.get(position).toString());
+        holder.matter.setText(classes[position]);
         holder.grade.setText((CharSequence) grades[position]);
-        holder.fault.setText(faults.get(position).toString());
+        holder.fault.setText(faults[position]);
     }
 
     @Override
     public int getItemCount() {
-        return matters == null ? 0 : matters.size();
+        return classes == null ? 0 : classes.length;
     }
 
     public static class RecyclerViewHolder extends RecyclerView.ViewHolder {
-        @BindView(R.id.grade)
+        @BindView(R.id.grades)
         TextView grade;
         @BindView(R.id.faults)
         TextView fault;
-        @BindView(R.id.materias)
+        @BindView(R.id.classes)
         TextView matter;
 
 

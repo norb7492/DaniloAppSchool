@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 
 import javax.inject.Inject;
 
+import gorick.gradesprojectandroid.MVP.Presenter.Adapters.GradeAdapter;
 import gorick.gradesprojectandroid.MVP.Presenter.MyApplication;
 import gorick.gradesprojectandroid.MVP.Presenter.Presenters.MainPresenter;
 import gorick.gradesprojectandroid.MVP.Presenter.Response.GradeResponse;
@@ -16,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
 
     private RecyclerView recyclerViewGrade;
     private RecyclerView.LayoutManager layoutManager;
-
+    private GradeAdapter adapterGrade;
 
     @Inject
     GradeResponse gradeResponse;
@@ -31,12 +32,14 @@ public class MainActivity extends AppCompatActivity {
 
         MyApplication.getMainComponent().injectIntoMainActivity(this);// informando ao dagger sobre o uso de um component e a necessidade de injetar dependência
 
-        recyclerViewGrade = (RecyclerView) findViewById(R.id.notas);
-        layoutManager = new LinearLayoutManager(this);
+        gradeResponse.getGradeRx();
+
+        recyclerViewGrade = (RecyclerView) findViewById(R.id.materias);
+        layoutManager = new LinearLayoutManager(MainActivity.this);
         recyclerViewGrade.setLayoutManager(layoutManager);
         recyclerViewGrade.setHasFixedSize(true);
-
-        gradeResponse.getGradeRx();
+        adapterGrade = new GradeAdapter(mainPresenter.getListGrades(), mainPresenter.getListFaults(), mainPresenter.getListClasses());
+        recyclerViewGrade.setAdapter(adapterGrade);
 
     }
 }

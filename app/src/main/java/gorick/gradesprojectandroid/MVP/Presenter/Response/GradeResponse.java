@@ -69,7 +69,7 @@ public class GradeResponse {
                             classesList[i] = grades.getReportLists()[i].getClassList();
                         }
                         Log.i(TAG, "caralhoooooo " + Arrays.asList(classesList) + Arrays.asList(gradesList) + Arrays.asList(faultsList));
-                        //mainPresenter.setListGrades(gradesList.getGradeList());
+                        mainPresenter.setListGrades(gradesList, faultsList, classesList);
                     }
                 });
     }

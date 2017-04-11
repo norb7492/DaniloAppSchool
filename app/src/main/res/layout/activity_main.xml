@@ -69,26 +69,6 @@
             android:layout_marginStart="28dp"
             android:scrollbars="vertical" />
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/faltas"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_marginLeft="53dp"
-            android:layout_marginStart="53dp"
-            android:layout_toEndOf="@+id/notas"
-            android:layout_toRightOf="@+id/notas"
-            android:scrollbars="vertical" />
-
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/notas"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:scrollbars="vertical" />
-
-
     </RelativeLayout>
 
 

@@ -3,8 +3,6 @@ package gorick.gradesprojectandroid.MVP.Presenter.Presenters;
 import android.support.v7.widget.RecyclerView;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
 
 import gorick.gradesprojectandroid.MVP.Presenter.Adapters.GradeAdapter;
 
@@ -14,17 +12,32 @@ import gorick.gradesprojectandroid.MVP.Presenter.Adapters.GradeAdapter;
 
 public class MainPresenter {
 
+    private BigDecimal[] listGrades;
+    private Integer[] listFaults;
+    private String[] listClasses;
+
     private RecyclerView recyclerViewGrade;
     private GradeAdapter adapterGrade;
-    List<Integer> faults = new ArrayList<Integer>();
 
+    public void setListGrades(BigDecimal[] listGrades, Integer[] listFaults, String[] listClasses){
 
-    List<String> matters = new ArrayList<String>();
+        this.listClasses = listClasses;
+        this.listFaults = listFaults;
+        this.listGrades = listGrades;
 
-    public void setListGrades(BigDecimal[] listGrades){
-        //List<DecimalFormat> listGrades = new ArrayList<>();
-        //listGrades.add(grade);
-        adapterGrade = new GradeAdapter(listGrades, faults, matters);
-        recyclerViewGrade.setAdapter(adapterGrade);
+        //adapterGrade = new GradeAdapter(listGrades, listFaults, listClasses);
+        //recyclerViewGrade.setAdapter(adapterGrade);
+    }
+
+    public BigDecimal[] getListGrades() {
+        return listGrades;
+    }
+
+    public Integer[] getListFaults() {
+        return listFaults;
+    }
+
+    public String[] getListClasses() {
+        return listClasses;
     }
 }
