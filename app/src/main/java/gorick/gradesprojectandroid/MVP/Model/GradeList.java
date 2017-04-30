@@ -16,16 +16,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class GradeList extends GradeModel{
 
-    @SerializedName("grade")
+    @SerializedName("boletim")
     @Expose
-    private BigDecimal gradesList;
-
-    @SerializedName("fault")
-    @Expose
-    private int faultList;
-
-    @SerializedName("class")
-    @Expose
-    private String classList;
+    private GradeModel[] reportLists;
 
 }

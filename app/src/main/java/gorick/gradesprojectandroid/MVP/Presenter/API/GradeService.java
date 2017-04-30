@@ -1,6 +1,6 @@
 package gorick.gradesprojectandroid.MVP.Presenter.API;
 
-import gorick.gradesprojectandroid.MVP.Model.GradeModel;
+import gorick.gradesprojectandroid.MVP.Model.GradeList;
 import retrofit2.http.GET;
 import rx.Observable;
 
@@ -12,5 +12,5 @@ import rx.Observable;
 public interface GradeService {
 
     @GET("grades_json3.json")
-    Observable<GradeModel> getGrade();
+    Observable<GradeList> getGrade();
 }

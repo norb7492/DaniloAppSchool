@@ -3,6 +3,8 @@ package gorick.gradesprojectandroid.MVP.Model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.math.BigDecimal;
+
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -14,9 +16,19 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class GradeModel {
 
-    @SerializedName("boletim")
+    @SerializedName("grade")
     @Expose
-    private GradeList[] reportLists;
+    private BigDecimal grade;
+
+    @SerializedName("fault")
+    @Expose
+    private int faul;
+
+    @SerializedName("class")
+    @Expose
+    private String classS;
+
+
 
     //@SerializedName("boletim")
     //@Expose
